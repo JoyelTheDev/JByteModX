@@ -80,7 +80,7 @@ public class JdwpConnection implements Closeable {
                 }
             } catch (SocketTimeoutException e) {
                 // read timeout - loop and check running flag
-            } catch (EOFException | IOException e) {
+            } catch (IOException e) {
                 if (running) {
                     fireDisconnected(e);
                 }
