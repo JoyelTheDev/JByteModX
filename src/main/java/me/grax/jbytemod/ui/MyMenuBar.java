@@ -540,6 +540,31 @@ public class MyMenuBar extends JMenuBar {
 
         help.add(licenses);
         this.add(help);
+
+        JMenu debugMenu = new JMenu("Debugger");
+        JMenuItem jdwpConnect = new JMenuItem("JDWP Debugger...");
+        jdwpConnect.setAccelerator(KeyStroke.getKeyStroke('D', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        jdwpConnect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                de.xbrowniecodez.jbytemod.jdwp.ui.JdwpPanel panel =
+                        de.xbrowniecodez.jbytemod.jdwp.ui.JdwpPanel.getInstance(jbm);
+                panel.setVisible(true);
+                panel.toFront();
+            }
+        });
+        debugMenu.add(jdwpConnect);
+
+        JMenuItem jdwpDisconnect = new JMenuItem("Disconnect JDWP");
+        jdwpDisconnect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                de.xbrowniecodez.jbytemod.jdwp.JdwpSessionManager.getInstance().disconnect();
+                JOptionPane.showMessageDialog(jbm, "JDWP session disconnected.", "Debugger", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        debugMenu.add(jdwpDisconnect);
+        this.add(debugMenu);
     }
 
     protected void canNotFindFile() {
