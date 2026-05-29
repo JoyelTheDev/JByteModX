@@ -8,7 +8,7 @@
 
 **JByteMod Remastered** is an enhanced Java bytecode editor and analyzer built on top of the original JByteMod. It provides an intuitive GUI for loading, inspecting, editing, and saving `.jar`, `.class`, and `.apk` files, with deep integration for multiple decompilers, a control flow visualizer, obfuscation detection, deobfuscation utilities, a live-attach mode, and a plugin system for extensibility.
 
-Current version: **2.9.1** â€” requires JDK 21.
+Current version: **...** â€” requires JDK 21.
 
 ---
 
