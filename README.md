@@ -8,28 +8,28 @@
 
 **JByteMod Remastered** is an enhanced Java bytecode editor and analyzer built on top of the original JByteMod. It provides an intuitive GUI for loading, inspecting, editing, and saving `.jar`, `.class`, and `.apk` files, with deep integration for multiple decompilers, a control flow visualizer, obfuscation detection, deobfuscation utilities, a live-attach mode, and a plugin system for extensibility.
 
-Current version: **...** â€” requires JDK 21.
+Current version: **2.9.1** — requires JDK 21.
 
 ---
 
 ## Features
 
-- **Advanced Bytecode Editing** â€” view and directly modify Java bytecode instructions in an interactive list. Edit opcodes, operands, LDC constants, annotations, local variable tables, and try-catch blocks with dedicated editors.
-- **Multiple Decompiler Backends** â€” seamlessly switch between six decompilers: CFR, Procyon, Vineflower (Fernflower), JD-Core, ASMifier, and Koffee.
-- **Control Flow Visualization** â€” generate graphical control flow diagrams (CFGs) of any method. Save diagrams as images.
-- **Obfuscation Detection** â€” analyze loaded classes for name obfuscation (non-ASCII names, keyword abuse, reserved filenames) and method-level obfuscation patterns (try-catch block obfuscation, POP2 abuse, invokedynamic tricks, string obfuscation). Detects signatures from Allatori, Stringer, and ZKM.
-- **Deobfuscation Utilities** â€” run automated cleanup passes including constant folding, signature fixing, line number / local variable stripping, synthetic bridge removal, illegal varargs fixing, goto rearrangement, trap handler merging, unconditional switch removal, and illegal annotation removal.
-- **Android APK Support** â€” load and decompile `.apk` files (via dex-translator). APK classes are converted to ASM `ClassNode`s for inspection with the same interface as JARs. (Editing and saving APKs is not yet supported.)
-- **Live Attach & Retransform** â€” attach to a running JVM process using the Java Attach API and retransform loaded classes in real time, without restarting the target application.
-- **Search & Replace** â€” search across the entire loaded JAR for LDC string constants, field/method references, and string patterns.
-- **Constant Pool Editor** â€” browse and modify constant pool entries.
-- **Plugin System** â€” extend the tool with custom plugins. Drop a `.jar` into the `plugins/` folder; it is loaded at startup with full access to the class tree, selected node, and menu bar.
-- **Drag and Drop** â€” drag `.jar`, `.apk`, or `.class` files directly onto the window to open them.
-- **Cross-Platform** â€” runs on Windows, macOS, and Linux.
-- **Localization** â€” UI strings available in English, German, Spanish, Portuguese (Brazil), Russian, Simplified Chinese, Traditional Chinese, and Chinese.
-- **Discord Rich Presence** â€” optionally shows what file you are editing in your Discord status.
-- **Auto-Update Check** â€” checks the GitHub releases API on startup and notifies you of new versions.
-- **Dark / Light Theme** â€” powered by DarkLaf (FlatLaf) with a custom RSyntaxTextArea theme.
+- **Advanced Bytecode Editing** — view and directly modify Java bytecode instructions in an interactive list. Edit opcodes, operands, LDC constants, annotations, local variable tables, and try-catch blocks with dedicated editors.
+- **Multiple Decompiler Backends** — seamlessly switch between six decompilers: CFR, Procyon, Vineflower (Fernflower), JD-Core, ASMifier, and Koffee.
+- **Control Flow Visualization** — generate graphical control flow diagrams (CFGs) of any method. Save diagrams as images.
+- **Obfuscation Detection** — analyze loaded classes for name obfuscation (non-ASCII names, keyword abuse, reserved filenames) and method-level obfuscation patterns (try-catch block obfuscation, POP2 abuse, invokedynamic tricks, string obfuscation). Detects signatures from Allatori, Stringer, and ZKM.
+- **Deobfuscation Utilities** — run automated cleanup passes including constant folding, signature fixing, line number / local variable stripping, synthetic bridge removal, illegal varargs fixing, goto rearrangement, trap handler merging, unconditional switch removal, and illegal annotation removal.
+- **Android APK Support** — load and decompile `.apk` files (via dex-translator). APK classes are converted to ASM `ClassNode`s for inspection with the same interface as JARs. (Editing and saving APKs is not yet supported.)
+- **Live Attach & Retransform** — attach to a running JVM process using the Java Attach API and retransform loaded classes in real time, without restarting the target application.
+- **Search & Replace** — search across the entire loaded JAR for LDC string constants, field/method references, and string patterns.
+- **Constant Pool Editor** — browse and modify constant pool entries.
+- **Plugin System** — extend the tool with custom plugins. Drop a `.jar` into the `plugins/` folder; it is loaded at startup with full access to the class tree, selected node, and menu bar.
+- **Drag and Drop** — drag `.jar`, `.apk`, or `.class` files directly onto the window to open them.
+- **Cross-Platform** — runs on Windows, macOS, and Linux.
+- **Localization** — UI strings available in English, German, Spanish, Portuguese (Brazil), Russian, Simplified Chinese, Traditional Chinese, and Chinese.
+- **Discord Rich Presence** — optionally shows what file you are editing in your Discord status.
+- **Auto-Update Check** — checks the GitHub releases API on startup and notifies you of new versions.
+- **Dark / Light Theme** — powered by DarkLaf (FlatLaf) with a custom RSyntaxTextArea theme.
 
 ---
 
@@ -85,9 +85,9 @@ Displays the instruction list (`MyCodeList`) for the selected method. Double-cli
 
 Additional sub-panels:
 
-- **LVP (Local Variable Parameters)** â€” view and edit the local variable table.
-- **TCB (Try-Catch Blocks)** â€” view and manage exception handler ranges.
-- **Address list** â€” shows bytecode offsets.
+- **LVP (Local Variable Parameters)** — view and edit the local variable table.
+- **TCB (Try-Catch Blocks)** — view and manage exception handler ranges.
+- **Address list** — shows bytecode offsets.
 
 ### Decompiler tab
 
@@ -280,7 +280,7 @@ Dependabot is configured to check Maven dependencies daily.
 | DarkLaf | 3.0.2 | Dark/light theme (FlatLaf-based) |
 | RSyntaxTextArea | 3.5.1 | Syntax-highlighted source editor |
 | DiscordIPC | 0.6.1 | Discord Rich Presence |
-| dex-translator | 2.3 | DEX â†’ JVM bytecode conversion (APK support) |
+| dex-translator | 2.3 | DEX → JVM bytecode conversion (APK support) |
 | Guava | 32.1.3-jre | Utilities |
 | Gson | 2.11.0 | JSON parsing (update checker) |
 | Lombok | latest | Boilerplate reduction |
@@ -296,38 +296,38 @@ Dependabot is configured to check Maven dependencies daily.
 
 ```
 src/main/java/
-â”œâ”€â”€ de/xbrowniecodez/jbytemod/          # Remastered layer (main application)
-â”‚   â”œâ”€â”€ Main.java                        # Entry point (singleton enum), CLI parsing
-â”‚   â”œâ”€â”€ JByteMod.java                   # Application JFrame, state owner
-â”‚   â”œâ”€â”€ asm/                             # Custom ClassReader / ClassWriter
-â”‚   â”œâ”€â”€ decompiler/                      # ASMifier, JD-Core, Vineflower backends
-â”‚   â”œâ”€â”€ discord/                         # Discord Rich Presence integration
-â”‚   â”œâ”€â”€ plugin/                          # Plugin & PluginManager
-â”‚   â”œâ”€â”€ ui/                              # MemoryBar, NotificationManager, lists
-â”‚   â””â”€â”€ utils/                           # BytecodeUtils, ClassUtils, UpdateChecker
-â”‚
-â”œâ”€â”€ me/grax/jbytemod/                    # Original JByteMod layer
-â”‚   â”œâ”€â”€ JarArchive.java                  # Map<String, ClassNode> container
-â”‚   â”œâ”€â”€ analysis/                        # ObfuscationAnalyzer, InsnAnalyzer
-â”‚   â”œâ”€â”€ decompiler/                      # CFR, Procyon, Koffee backends; Decompilers enum
-â”‚   â”œâ”€â”€ logging/                         # Logging
-â”‚   â”œâ”€â”€ res/                             # Options, LanguageRes (i18n)
-â”‚   â”œâ”€â”€ ui/                              # ClassTree, MyCodeList, MyMenuBar, dialogues, graph
-â”‚   â””â”€â”€ utils/                           # DeobfuscateUtils, InstrUtils, attach, task, asm
-â”‚
-â”œâ”€â”€ me/lpk/util/                         # Utility library (AccessHelper, JarUtils, OpUtils)
-â”‚
-â”œâ”€â”€ com/javadeobfuscator/deobfuscator/   # Embedded deobfuscator / frame-based analyzer
-â”‚   â”œâ”€â”€ analyzer/                        # MethodAnalyzer, ArgsAnalyzer, frame types
-â”‚   â””â”€â”€ utils/                           # TransformerHelper, Utils, PrimitiveUtils
-â”‚
-â”œâ”€â”€ de/xbrowniecodez/android/asm/        # APK support: Dex2ASMVisitorFactory
-â”‚
-â””â”€â”€ org/objectweb/asm/                   # Locally patched ASM classes (ClassWriter, tree nodes)
+├── de/xbrowniecodez/jbytemod/          # Remastered layer (main application)
+│   ├── Main.java                        # Entry point (singleton enum), CLI parsing
+│   ├── JByteMod.java                   # Application JFrame, state owner
+│   ├── asm/                             # Custom ClassReader / ClassWriter
+│   ├── decompiler/                      # ASMifier, JD-Core, Vineflower backends
+│   ├── discord/                         # Discord Rich Presence integration
+│   ├── plugin/                          # Plugin & PluginManager
+│   ├── ui/                              # MemoryBar, NotificationManager, lists
+│   └── utils/                           # BytecodeUtils, ClassUtils, UpdateChecker
+│
+├── me/grax/jbytemod/                    # Original JByteMod layer
+│   ├── JarArchive.java                  # Map<String, ClassNode> container
+│   ├── analysis/                        # ObfuscationAnalyzer, InsnAnalyzer
+│   ├── decompiler/                      # CFR, Procyon, Koffee backends; Decompilers enum
+│   ├── logging/                         # Logging
+│   ├── res/                             # Options, LanguageRes (i18n)
+│   ├── ui/                              # ClassTree, MyCodeList, MyMenuBar, dialogues, graph
+│   └── utils/                           # DeobfuscateUtils, InstrUtils, attach, task, asm
+│
+├── me/lpk/util/                         # Utility library (AccessHelper, JarUtils, OpUtils)
+│
+├── com/javadeobfuscator/deobfuscator/   # Embedded deobfuscator / frame-based analyzer
+│   ├── analyzer/                        # MethodAnalyzer, ArgsAnalyzer, frame types
+│   └── utils/                           # TransformerHelper, Utils, PrimitiveUtils
+│
+├── de/xbrowniecodez/android/asm/        # APK support: Dex2ASMVisitorFactory
+│
+└── org/objectweb/asm/                   # Locally patched ASM classes (ClassWriter, tree nodes)
 
 src/main/resources/
-â”œâ”€â”€ locale/                              # i18n XML files (en, de, es, pt-br, ru, zh, zh-cn, zh-tr)
-â””â”€â”€ resources/                           # Icons, themes, opcode reference HTML, properties
+├── locale/                              # i18n XML files (en, de, es, pt-br, ru, zh, zh-cn, zh-tr)
+└── resources/                           # Icons, themes, opcode reference HTML, properties
 ```
 
 ---
@@ -369,9 +369,9 @@ JByteMod Remastered is licensed under the **MIT License**. See the `LICENSE` fil
 
 Portions of this project are derived from or include code from:
 
-- [java-deobfuscator](https://github.com/java-deobfuscator) â€” deobfuscation utilities and frame-based analyzer
-- [Radon](https://github.com/ItzSomebody/Radon) â€” additional deobfuscation transforms
-- [ObjectWeb ASM](https://asm.ow2.io/) â€” locally patched ClassWriter and tree node classes (BSD-3-Clause)
+- [java-deobfuscator](https://github.com/java-deobfuscator) — deobfuscation utilities and frame-based analyzer
+- [Radon](https://github.com/ItzSomebody/Radon) — additional deobfuscation transforms
+- [ObjectWeb ASM](https://asm.ow2.io/) — locally patched ClassWriter and tree node classes (BSD-3-Clause)
 
 See `src/main/resources/resources/LICENSES` for third-party license texts.
 
