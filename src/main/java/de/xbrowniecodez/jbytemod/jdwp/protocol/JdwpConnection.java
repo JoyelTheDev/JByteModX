@@ -79,7 +79,6 @@ public class JdwpConnection implements Closeable {
                     dispatchEvent(pkt);
                 }
             } catch (SocketTimeoutException e) {
-                // read timeout - loop and check running flag
             } catch (IOException e) {
                 if (running) {
                     fireDisconnected(e);
