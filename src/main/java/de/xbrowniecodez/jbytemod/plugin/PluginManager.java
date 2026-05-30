@@ -1,9 +1,10 @@
 package de.xbrowniecodez.jbytemod.plugin;
 
 import de.xbrowniecodez.jbytemod.Main;
+import de.xbrowniecodez.jbytemod.JByteMod;
+import de.xbrowniecodez.jbytemod.diff.DiffPlugin;
 import de.xbrowniecodez.jbytemod.utils.Utils;
 import lombok.Getter;
-import de.xbrowniecodez.jbytemod.JByteMod;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
 @Getter
 public class PluginManager {
 
@@ -20,10 +22,27 @@ public class PluginManager {
     private final File pluginFolder = new File(Utils.getWorkingDirectory(), "plugins");
 
     public PluginManager(JByteMod jbm) {
+        registerBuiltinPlugins();
+
         if (pluginFolder.exists() && pluginFolder.isDirectory()) {
             loadPlugins();
         } else {
-             Main.INSTANCE.getLogger().err("No plugin folder found!");
+            Main.INSTANCE.getLogger().err("No plugin folder found!");
+        }
+    }
+
+    private void registerBuiltinPlugins() {
+        registerBuiltin(new DiffPlugin());
+    }
+
+    private void registerBuiltin(Plugin plugin) {
+        try {
+            plugin.init();
+            plugins.add(plugin);
+            Main.INSTANCE.getLogger().log("Built-in plugin registered: " + plugin.getName() + " v" + plugin.getVersion());
+        } catch (Exception e) {
+            Main.INSTANCE.getLogger().err("Failed to register built-in plugin: " + plugin.getName());
+            e.printStackTrace();
         }
     }
 
@@ -42,7 +61,7 @@ public class PluginManager {
     private void loadPlugins() {
         File[] files = pluginFolder.listFiles();
         if (files == null) {
-             Main.INSTANCE.getLogger().err("Plugin folder is empty or does not exist!");
+            Main.INSTANCE.getLogger().err("Plugin folder is empty or does not exist!");
             return;
         }
 
@@ -61,12 +80,12 @@ public class PluginManager {
                         }
                     }
                 } catch (Exception e) {
-                     Main.INSTANCE.getLogger().err("Plugin " + file.getName() + " failed to load!");
+                    Main.INSTANCE.getLogger().err("Plugin " + file.getName() + " failed to load!");
                     e.printStackTrace();
                 }
             }
         }
-         Main.INSTANCE.getLogger().log(plugins.size() + " plugin(s) loaded!");
+        Main.INSTANCE.getLogger().log(plugins.size() + " plugin(s) loaded!");
     }
 
     private void loadClassFromEntry(String name) {
@@ -80,9 +99,8 @@ public class PluginManager {
                 this.plugins.add(pluginInstance);
             }
         } catch (Exception e) {
-             Main.INSTANCE.getLogger().err("Failed to load class " + name);
+            Main.INSTANCE.getLogger().err("Failed to load class " + name);
             e.printStackTrace();
         }
     }
-
 }
